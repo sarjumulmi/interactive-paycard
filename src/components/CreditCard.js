@@ -144,6 +144,57 @@ const Card = styled.div`
     width: 100%;
     height: 100%;
     z-index: 4;
+      & .strip {
+        background: rgba(0, 0, 19, 0.8);
+        width: 100%;
+        height: 50px;
+        z-index: 2;
+        margin-top: 30px;
+        position: relative;
+      }
+      & .cvv {
+        position: relative;
+        z-index: 2;
+        text-align: right;
+        padding: 15px;
+        & .cvv-title {
+          color: white;
+          padding-right: 10px;
+          font-size: 15px;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+        & .cvv-band {
+          height: 45px;
+          background: white;
+          color: #1a3b5d;
+          font-size: 18px;
+          border-radius: 4px;
+          box-shadow: 0px 10px 20px -7px rgba(32, 56, 117, 0.35);
+          margin-bottom: 30px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          
+            & .cvv-item {
+              display: inline-block;
+              width: 15px;
+              font-size: 30px;
+              padding-top: 10px;
+            }
+        }
+        & .cvv-logo {
+          opacity: 0.7;
+          height: 45px;
+          display: flex;
+          justify-content: flex-end;
+          & img {
+            object-fit: contain;
+            object-position: top right;
+          }
+        }
+      }
+
   }
   & .front, .back {
     transition: all 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85);
@@ -174,6 +225,7 @@ const CreditCard = () => {
   const [name, setName] = useState('')
   const [month, setMonth] = useState('')
   const [year, setYear] = useState('')
+  const [cvv, setCvv] = useState([])
   const focusRef = useRef(null)
 
   const displayNumber = () => {
@@ -220,6 +272,17 @@ const CreditCard = () => {
       )
   }
 
+  const displayCvv = () => {
+    return (
+      <TransitionGroup component={null}>
+        {cvv.map((n, index) => (
+          <CSSTransition timeout={300} classNames="cvv" key={index + n}>
+            <span className="cvv-item">&#42;</span>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+    )
+  }
 
   const handleCardNumberChange = e => {
     let value = e.target.value
@@ -302,6 +365,15 @@ const CreditCard = () => {
     focusRef.current.style.transitionDelay = ".6s"
   }
 
+  const handleCvvChange = e => {
+    const value = e.target.value
+    if (value.length > 3) {
+      e.target.value = value.slice(0, 3)
+      return
+    }
+    setCvv(value.replace(/\s/g,'').split(''))
+  }
+
   return (
     <div>
       <Card isFlipped={flipped} >
@@ -350,6 +422,16 @@ const CreditCard = () => {
             <div className="bg">
               <img src={background} alt="bg" />
             </div>
+            <div className="strip"></div>
+            <div className="cvv">
+              <div className="cvv-title">CVV</div>
+              <div className="cvv-band">
+                {displayCvv()}
+              </div>
+              <div className="cvv-logo">
+                <img src={visa} alt="cvv-logo" />
+              </div>
+            </div>
           </div>
         </div>
       </Card>
@@ -379,7 +461,7 @@ const CreditCard = () => {
         <option value="2025">25</option>
       </select>
       <br />
-      CVV: <input onFocus={onCVVFocus}/>
+      CVV: <input onFocus={onCVVFocus} onChange={handleCvvChange}/>
     </div>
   )
 }
