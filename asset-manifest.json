@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/interactive-paycard/static/css/main.a74ccdf4.chunk.css",
+    "main.js": "/interactive-paycard/static/js/main.5a8a5d02.chunk.js",
+    "main.js.map": "/interactive-paycard/static/js/main.5a8a5d02.chunk.js.map",
+    "runtime-main.js": "/interactive-paycard/static/js/runtime-main.2b79954d.js",
+    "runtime-main.js.map": "/interactive-paycard/static/js/runtime-main.2b79954d.js.map",
+    "static/js/2.8a1f2b6d.chunk.js": "/interactive-paycard/static/js/2.8a1f2b6d.chunk.js",
+    "static/js/2.8a1f2b6d.chunk.js.map": "/interactive-paycard/static/js/2.8a1f2b6d.chunk.js.map",
+    "index.html": "/interactive-paycard/index.html",
+    "precache-manifest.4b2bb739275640a638e13a8e08ec5f20.js": "/interactive-paycard/precache-manifest.4b2bb739275640a638e13a8e08ec5f20.js",
+    "service-worker.js": "/interactive-paycard/service-worker.js",
+    "static/css/main.a74ccdf4.chunk.css.map": "/interactive-paycard/static/css/main.a74ccdf4.chunk.css.map",
+    "static/media/21.jpeg": "/interactive-paycard/static/media/21.cd0636da.jpeg",
+    "static/media/chip.png": "/interactive-paycard/static/media/chip.2c37b1d3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b79954d.js",
+    "static/js/2.8a1f2b6d.chunk.js",
+    "static/css/main.a74ccdf4.chunk.css",
+    "static/js/main.5a8a5d02.chunk.js"
+  ]
+}
